@@ -33,27 +33,72 @@ MENSAGENS = [
 def configurar_interface():
     st.set_page_config(page_title="Treino de Segurança", page_icon="📱", layout="centered")
     
-    # CSS customizado focado em idosos: fontes grandes (20px+), cores de alto contraste e estilo WhatsApp
+    # CSS focado em ACESSIBILIDADE e compatível com MODO ESCURO/CLARO:
     st.markdown("""
         <style>
-            .titulo { font-size: 28px !important; font-weight: bold; color: #1E3A8A; }
-            .texto-grande { font-size: 20px !important; color: #333333; line-height: 1.5; }
+            .titulo { 
+                font-size: 40px !important; 
+                font-weight: 900; 
+                /* Usa a cor de texto padrão do Streamlit (Preto no claro, Branco no escuro) */
+                color: var(--text-color) !important; 
+                text-align: center; 
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+            .texto-grande { 
+                font-size: 26px !important; 
+                color: var(--text-color) !important; 
+                line-height: 1.6; 
+                font-weight: 600; 
+            }
             .chat-bubble {
-                background-color: #DCF8C6; /* Verde claro característico do WhatsApp */
+                background-color: #E6F3FF; /* Azul claro fixo */
+                border: 4px solid #0056B3; 
                 border-radius: 15px;
-                padding: 20px;
-                margin: 20px 0;
-                box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-                font-size: 22px;
-                color: #000000;
+                padding: 30px;
+                margin: 30px 0;
+                font-size: 30px; 
+                font-weight: 700;
+                /* Como o fundo é sempre claro, o texto DEVE ser preto para manter o contraste */
+                color: #000000 !important; 
             }
             .feedback-box {
-                background-color: #F0F9FF; /* Azul bem claro e relaxante */
-                border-left: 6px solid #0284C7;
-                padding: 20px;
-                margin-top: 20px;
-                font-size: 20px;
-                color: #0F172A;
+                background-color: #FFFFE0; /* Amarelo claro fixo */
+                border-left: 10px solid #D97706; 
+                padding: 25px;
+                margin-top: 30px;
+                font-size: 26px;
+                /* Fundo amarelo exige texto escuro */
+                color: #000000 !important; 
+                font-weight: 700;
+            }
+            
+            /* Customizando os botões para respeitarem o tema */
+            div.stButton > button {
+                font-size: 26px !important;
+                font-weight: 900 !important;
+                padding: 25px 20px !important;
+                height: auto !important;
+                /* Borda, cor e fundo se adaptam ao modo do usuário */
+                border: 4px solid var(--text-color) !important; 
+                border-radius: 12px !important;
+                color: var(--text-color) !important; 
+                background-color: var(--secondary-background-color) !important; 
+                white-space: normal !important; 
+                box-shadow: 0px 4px 6px rgba(0,0,0,0.4); 
+            }
+            
+            div.stButton > button:hover {
+                background-color: var(--primary-color) !important;
+                color: white !important;
+                border-color: var(--primary-color) !important;
+                transform: scale(1.02); 
+            }
+            
+            /* Separador adaptável */
+            hr {
+                border-top: 3px solid var(--text-color);
+                opacity: 0.2;
             }
         </style>
     """, unsafe_allow_html=True)
